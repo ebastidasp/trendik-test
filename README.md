@@ -26,5 +26,5 @@ Mejoras:
 4. Hacer más eficiente las peticiones en caso de que se tengan millones de usuarios
 
 Nota:
-Dependiendo de la ubicación que se ingrese, se muestran los seguidores que sean de esa ubicación o que tengan al menos un seguidor de ese lugar.
+Dependiendo de la ubicación que se ingrese, se muestran los influencers que sean de esa ubicación o que tengan al menos un seguidor de ese lugar.
 Se muestra un máximo de 5 influencers por página.
