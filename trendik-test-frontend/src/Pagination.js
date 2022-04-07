@@ -25,6 +25,7 @@ class Pagination extends Component {
   constructor(props) {
     super(props);
     const { totalRecords = null, pageLimit = 30, pageNeighbours = 0 } = props;
+    console.log("constructor ", totalRecords);
 
     this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 30;
     this.totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
@@ -37,6 +38,24 @@ class Pagination extends Component {
     this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
 
     this.state = { currentPage: 1 };
+  }
+
+  componentDidUpdate (prevProps) {
+      console.log("pp ", prevProps);
+      console.log("props ", this.props)
+    if( prevProps.totalRecords !== this.props.totalRecords){
+         this.totalRecords = this.props.totalRecords;
+         this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
+         if(this.state.currentPage > this.totalPages){
+             console.log("Entró al segundo If");
+            this.setState({ currentPage: this.totalPages });
+            console.log("currp " ,this.state.currentPage);
+         }
+         this.gotoPage(this.state.currentPage)
+         this.forceUpdate();
+         this.render();
+    }
+    
   }
 
   fetchPageNumbers = () => {
@@ -88,8 +107,12 @@ class Pagination extends Component {
         }
       }
 
+
       return [1, ...pages, totalPages];
     }
+    console.log(this.totalRecords);
+    console.log(totalPages);
+    console.log("Salio del if");
 
     return range(1, totalPages);
   }
@@ -126,7 +149,7 @@ class Pagination extends Component {
 
               return (
                 <li key={index} className={`page-item${ currentPage === page ? ' active' : ''}`}>
-                  <a className="page-link" href="#" onClick={ this.handleClick(page) }>{ page }</a>
+                  <a className="page-link" href="#" onClick={ this.handleClick(page) }>{ page } </a>
                 </li>
               );
 

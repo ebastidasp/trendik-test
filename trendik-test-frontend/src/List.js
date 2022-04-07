@@ -25,9 +25,7 @@ function List(props) {
         }
     })
 
-    var influencersToShow = filteredData.slice(0,20);
     const [currentPageF, setCurrentPageF] = useState(1);
-    const [totalPagesF, setTotalPagesF] = useState(Math.ceil(filteredData.length/20));
 
     const onPageChanged = data => {
         const { currentPage, totalPages, pageLimit } = data;
@@ -39,7 +37,6 @@ function List(props) {
         
     
         setCurrentPageF(currentPage);
-        setTotalPagesF(Math.ceil(filteredData.length/20));
       }
 
 
@@ -57,16 +54,16 @@ function List(props) {
               </h2>
               { currentPageF && (
                 <span className="current-page d-inline-block h-100 pl-4 text-secondary">
-                  Page <span className="font-weight-bold">{ currentPageF }</span> / <span className="font-weight-bold">{ Math.ceil(filteredData.length/20) }</span>
+                  Página <span className="font-weight-bold">{ currentPageF }</span> / <span className="font-weight-bold">{ Math.ceil(filteredData.length/5) }</span>
                 </span>
               ) }
             </div>
-            <div className="d-flex flex-row py-4 align-items-center">
-              <Pagination totalRecords={totalInfluencers} pageLimit={20} pageNeighbours={1} onPageChanged={onPageChanged} />
+            <div className="d-flex flex-row py-4 align-items-center">{console.log("fd ", filteredData.length)}
+              <Pagination totalRecords={filteredData.length} pageLimit={5} pageNeighbours={2} onPageChanged={onPageChanged} />
             </div>
           </div>
         <ul>
-            {filteredData.slice((currentPageF-1)*20, (currentPageF-1)*20+20).map((item) => {return(
+            {filteredData.slice((currentPageF-1)*5, (currentPageF-1)*5+5).map((item) => {return(
                 <li key={item.id}>{item.firstName} {item.lastName}: {item.typeofinfluencer}. De {item.country}
                 <h3>Seguidores:</h3>
                 {item.influencer == true ? <ListofFollowers items = {props.items} followers = {item.followers}/> : <div></div>}
