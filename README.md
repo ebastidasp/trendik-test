@@ -17,12 +17,14 @@ Log del trabajo:
 2. Creación de la vista principal de la aplicación, sin los botones para filtrar por tipo de influencer: 2 horas.
 3. Creación de los archivos de lista y lista de seguidores: 3 horas.
 4. Creación del grupo de botones con los tipos de influencer: 1 hora.
+5. Adición de paginación a los filtros: 5 horas.
 
 Mejoras:
 1. Añadir una base de datos.
 2. Mejorar la forma en que se despliegan los seguidores de un influencer.
 3. Utilizar cards para mostrar la información de cada influencer y seguidor.
-4. Hacer más eficiente las peticiones en caso de que se tengan millones de usuarios.
+4. Hacer más eficiente las peticiones en caso de que se tengan millones de usuarios
 
 Nota:
 Dependiendo de la ubicación que se ingrese, se muestran los seguidores que sean de esa ubicación o que tengan al menos un seguidor de ese lugar.
+Se muestra un máximo de 5 influencers por página.
